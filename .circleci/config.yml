@@ -1,0 +1,15 @@
+version: 2
+
+jobs:
+  build:
+    docker:
+      - image: cimg/openjdk:17.0.5
+    working_directory: ~/sessylib
+
+    environment:
+      # eventueel extra opties aan de JVM mee te geven
+      JVM_OPTS: -Xmx3200m
+    steps:
+      - checkout
+      - run: gradle dependencies
+      - run: gradle test
